@@ -48,11 +48,11 @@ if (strpos($_msg, 'edo') !== false) {
   }
 }else{
   if($isData >0){
-   foreach($data as $rec){
+   foreach(array_rand($data,1) as $rec){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = array_rand($rec->answer,1);
+    $arrPostData['messages'][0]['text'] = $rec->answer;
    }
   }else{
     $arrPostData = array();
