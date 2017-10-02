@@ -20,8 +20,8 @@ if (!is_null($events['events'])) {
 			$messages = 
 				[
 				
-				    "type": "text",
-				    "text": "\uDBC0\uDC84 LINE emoji"
+				    "type" => "text",
+				    "text" => "\uDBC0\uDC84 LINE emoji"
 							 
 			];
 				
