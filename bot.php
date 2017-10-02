@@ -18,12 +18,12 @@ if (!is_null($events['events'])) {
 
 			// Build message to reply back
 			$messages = 
-				array(
+				[
 				
 				    "type": "text",
 				    "text": "\uDBC0\uDC84 LINE emoji"
 							 
-			);
+			];
 				
 
 			// Make a POST Request to Messaging API to reply to sender
