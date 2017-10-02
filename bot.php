@@ -20,7 +20,7 @@ if (!is_null($events['events'])) {
 			$messages = 
 				[
 				'type' => 'text',
-				'text' => $replyToken ,				 
+				'text' => '\uDBC0\uDC84' ,				 
 			];
 				
 
