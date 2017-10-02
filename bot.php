@@ -1,6 +1,5 @@
 <?php
 $access_token = 'pvshntZ6AyDG9yEbGFQqR++VTaVTyMn+ibQRRMz8+JP2wNrO7eSBiWE9olx2uK8uAIQkVRVJxKYIIPujGMaV2xcdavFKcPICfpAcAORw2BxT4Ku/aYQLCeXaIGVFnCE5ipvqGs9eSxgf2gfNoreKCgdB04t89/1O/w1cDnyilFU=';
-
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
  
@@ -13,8 +12,8 @@ $_msg = $arrJson['events'][0]['message']['text'];
  
  
 $api_key="<MLAB APIKEY>";
-$url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
+$url = 'https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'';
+$json = file_get_contents('https://api.mlab.com/api/1/databases/duckduck/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
  
@@ -72,3 +71,4 @@ curl_setopt($channel, CURLOPT_RETURNTRANSFER,true);
 curl_setopt($channel, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec($channel);
 curl_close ($channel);
+?>
