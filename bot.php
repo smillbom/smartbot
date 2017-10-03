@@ -113,7 +113,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'addkey {$key} ok';
+    $arrPostData['messages'][0]['text'] = 'addkey .$key. ok';
    
   }
 }
