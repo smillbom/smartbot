@@ -52,7 +52,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $rec->answer;
+    $arrPostData['messages'][1]['text'] = $rec->answer;
    }
   }else{
     $arrPostData = array();
