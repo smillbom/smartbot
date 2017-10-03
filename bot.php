@@ -28,6 +28,10 @@ $isDatachk = sizeof($datachk);
 $jsonkey = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"key":"'.$_msg.'"}');
 $datakry = json_decode($jsonkey);
 $isDatakey = sizeof($datakry);
+$key='';
+ foreach($data as $rec){
+      $key = $rec->key;
+   }
 
 if (strpos($_msg, 'edo') !== false) {
   if (strpos($_msg, 'edo') !== false) {
@@ -56,7 +60,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
-}else if($_msg == $isDatakey && $isDatakey <= 0){
+}else if($_msg == $key && $isDatachk <= 0){
     $newData = json_encode(
       array(
         'userid' => $userid,
@@ -76,7 +80,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'Key ของคุณถูกเปิดใช้ การโต้ตอบของผมต่อไปนี้มาจากผู้สร้างผมเพียงคนเดียว และคุณสามารถออกจากระบบได้เพียงพิมพ์คำว่า ออกอีโด้';
-}else if($_msg == $isDatakey and $isDatakey > 0){
+}else if($_msg == $key and $isDatachk > 0){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
