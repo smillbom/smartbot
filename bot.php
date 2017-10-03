@@ -56,7 +56,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
-}else if($_msg == $isDatakey and $isDatakey <= 0){
+}else if($_msg == $isDatakey && $isDatakey <= 0){
     $newData = json_encode(
       array(
         'userid' => $userid,
