@@ -46,6 +46,11 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
+}else if($_msg == '123456'){
+   $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = "ok"  ;
 }else{
   if($isData >0){
    foreach($data as $rec){
@@ -58,7 +63,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $_msg  ;
+    $arrPostData['messages'][0]['text'] = 'สอน : edo[ถาม|ตอบ]' ;
   }
 }
  
