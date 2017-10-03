@@ -54,11 +54,11 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "ok"  ;
-}else if($user != ''){
+}else if($_msg == '?'){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "ok".$user  ;
+    $arrPostData['messages'][0]['text'] = $user  ;
 }
 else{
   if($isData >0){
