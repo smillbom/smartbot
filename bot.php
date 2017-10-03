@@ -21,10 +21,9 @@ $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collecti
 $data = json_decode($json);
 $isData=sizeof($data);
 
-// $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.'"}');
-// $data = json_decode($json);
-// $isData=sizeof($data);
-
+$jsonchk = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.'"}');
+$datachk = json_decode($jsonchk);
+$isDatachk = sizeof($datachk);
 
 if (strpos($_msg, 'edo') !== false) {
   if (strpos($_msg, 'edo') !== false) {
@@ -71,7 +70,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ok';
+    $arrPostData['messages'][0]['text'] = 'คุณเข้าสู่ระบบส่วนตัวแล้วนะครับ การโต้ตอบของผมต่อไปนี้มาจากผู้สร้างผมเพียงคนเดียว และคุณสามารถออกจากระบบได้เพียงพิมพ์คำว่า ออกอีโด้';
 }
 else{
   if($isData >0){
