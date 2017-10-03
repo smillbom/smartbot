@@ -10,7 +10,9 @@ $strUrl = "https://api.line.me/v2/bot/message/reply";
 $arrHeader = array();
 $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
+
 $_msg = $arrJson['events'][0]['message']['text'];
+$userid = $arrJson['events'][0]['source']['userId'];
  
  
 $api_key="-O3pzxmDdrITsFlTnMCbWgsvqATaohmC";
@@ -58,7 +60,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $user  ;
+    $arrPostData['messages'][0]['text'] = $userid  ;
 }
 else{
   if($isData >0){
@@ -72,7 +74,7 @@ else{
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $content ;
+    $arrPostData['messages'][0]['text'] = $userid ;
   }
 }
  
