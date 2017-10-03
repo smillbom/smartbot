@@ -70,7 +70,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'คุณเข้าสู่ระบบส่วนตัวแล้วนะครับ การโต้ตอบของผมต่อไปนี้มาจากผู้สร้างผมเพียงคนเดียว และคุณสามารถออกจากระบบได้เพียงพิมพ์คำว่า ออกอีโด้';
+    $arrPostData['messages'][0]['text'] = 'Key ของคุณถูกเปิดใช้ การโต้ตอบของผมต่อไปนี้มาจากผู้สร้างผมเพียงคนเดียว และคุณสามารถออกจากระบบได้เพียงพิมพ์คำว่า ออกอีโด้';
 }
 else{
   if($isData >0){
