@@ -18,6 +18,8 @@ $url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey=
 $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
+
+$user = '';
  
 if (strpos($_msg, 'edo') !== false) {
   if (strpos($_msg, 'edo') !== false) {
@@ -47,11 +49,18 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
 }else if($_msg == '123456'){
-   $arrPostData = array();
+    $user = $_msg;
+    $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "ok"  ;
-}else{
+}else if($user != ''){
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = "ok".$user  ;
+}
+else{
   if($isData >0){
    foreach($data as $rec){
     $arrPostData = array();
