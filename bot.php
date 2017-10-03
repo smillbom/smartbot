@@ -21,8 +21,11 @@ $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collecti
 $data = json_decode($json);
 $isData=sizeof($data);
 
-$user = '';
- 
+$json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.'"}');
+$data = json_decode($json);
+$isData=sizeof($data);
+
+
 if (strpos($_msg, 'edo') !== false) {
   if (strpos($_msg, 'edo') !== false) {
     $x_tra = str_replace("edo","", $_msg);
@@ -69,11 +72,6 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'ok';
-}else if($_msg == '?'){
-    $arrPostData = array();
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $userid  ;
 }
 else{
   if($isData >0){
@@ -87,7 +85,7 @@ else{
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $userid ;
+    $arrPostData['messages'][0]['text'] = 'สอน edo ให้ฉลาดขึ้นพียงพิม: edo[คำถาม|ตอบ]' ;
   }
 }
  
