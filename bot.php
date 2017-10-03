@@ -58,7 +58,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'สามารถสอนให้ฉลาดได้เพียงพิมพ์: edo[คำถาม|คำตอบ]';
+    $arrPostData['messages'][0]['text'] = $arrPostData['replyToken'] ;
   }
 }
  
