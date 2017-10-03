@@ -51,11 +51,24 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
 }else if($_msg == '123456'){
-    $user = $_msg;
+    $newData = json_encode(
+      array(
+        'userid' => $userid        
+      )
+    );
+    $opts = array(
+      'http' => array(
+          'method' => "POST",
+          'header' => "Content-type: application/json",
+          'content' => $newData
+       )
+    );
+    $context = stream_context_create($opts);
+    $returnValue = file_get_contents($url,false,$context);
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "ok"  ;
+    $arrPostData['messages'][0]['text'] = 'ok';
 }else if($_msg == '?'){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
