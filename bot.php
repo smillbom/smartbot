@@ -21,9 +21,9 @@ $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collecti
 $data = json_decode($json);
 $isData=sizeof($data);
 
-$json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.'"}');
-$data = json_decode($json);
-$isData=sizeof($data);
+// $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.'"}');
+// $data = json_decode($json);
+// $isData=sizeof($data);
 
 
 if (strpos($_msg, 'edo') !== false) {
