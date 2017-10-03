@@ -25,6 +25,10 @@ $jsonchk = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/colle
 $datachk = json_decode($jsonchk);
 $isDatachk = sizeof($datachk);
 
+$jsonkey = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"key":"'.$_msg.'"}');
+$datakry = json_decode($jsonkey);
+$isDatakey = sizeof($datakry);
+
 if (strpos($_msg, 'edo') !== false) {
   if (strpos($_msg, 'edo') !== false) {
     $x_tra = str_replace("edo","", $_msg);
@@ -52,10 +56,11 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
-}else if($_msg == '123456'){
+}else if($_msg == $isDatakey and $isDatachk <= 0){
     $newData = json_encode(
       array(
-        'userid' => $userid        
+        'userid' => $userid,
+        'key' => $_msg 
       )
     );
     $opts = array(
@@ -71,8 +76,40 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'Key ของคุณถูกเปิดใช้ การโต้ตอบของผมต่อไปนี้มาจากผู้สร้างผมเพียงคนเดียว และคุณสามารถออกจากระบบได้เพียงพิมพ์คำว่า ออกอีโด้';
-}else if($isDatachk >0){
- $arrPostData = array();
+}else if($_msg == $isDatakey and $isDatachk > 0){
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = 'มีคนใช้ key นี้ไปแล้วไม่สามารถใช้ได้อีก';
+}else if (strpos($_msg, 'addkey') !== false) {
+  if (strpos($_msg, 'addkey') !== false) {
+    $x_tra = str_replace("addkey","", $_msg);
+    $pieces = explode("]", $x_tra);
+    $key=str_replace("[","",$pieces[0]);
+   
+    //Post New Data
+    $newData = json_encode(
+      array(
+        'key' => $key
+      )
+    );
+    $opts = array(
+      'http' => array(
+          'method' => "POST",
+          'header' => "Content-type: application/json",
+          'content' => $newData
+       )
+    );
+    $context = stream_context_create($opts);
+    $returnValue = file_get_contents($url,false,$context);
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = 'addkey {$key} ok';
+  }
+}
+else if($isDatachk >0){
+    $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'chk';
