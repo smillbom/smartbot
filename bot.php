@@ -111,6 +111,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'addkey {$key} ok';
+   
   }
 }
 else if($isDatachk >0){
@@ -118,6 +119,7 @@ else if($isDatachk >0){
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'chk';
+ sent();
 }
 else{
   if($isData >0){
@@ -135,7 +137,7 @@ else{
   }
 }
  
- 
+function sent(){
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
 curl_setopt($channel, CURLOPT_HEADER, false);
@@ -146,4 +148,5 @@ curl_setopt($channel, CURLOPT_RETURNTRANSFER,true);
 curl_setopt($channel, CURLOPT_SSL_VERIFYPEER, false);
 $result = curl_exec($channel);
 curl_close ($channel);
+ }
 ?>
