@@ -16,7 +16,7 @@ $userid = $arrJson['events'][0]['source']['userId'];
 $api_key="-O3pzxmDdrITsFlTnMCbWgsvqATaohmC";
 //get data public user
 $url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.',"userid":"all""}');
+$json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"all"}');
 $data = json_decode($json);
 $isData=sizeof($data);
 //get data private user
