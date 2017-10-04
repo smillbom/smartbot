@@ -120,6 +120,7 @@ else if($isDatachk >0){
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
+  }
  }else
   {
    if($isDatapivate >0){
