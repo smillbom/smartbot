@@ -18,10 +18,8 @@ $api_key="-O3pzxmDdrITsFlTnMCbWgsvqATaohmC";
 $url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'';
 $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"all"}');
 $data = json_decode($json);
-$isData=sizeof($data);
-foreach($data as $rec){
-      $isDataok = $rec->_id[$oid];
-   }
+$isData = sizeof($data);
+$isDataok = $data[0]['_id']['$oid'];
 //get data private user
 $jsonpivate = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"'.$userid.'"}');
 $datapivate = json_decode($jsonpivate);
