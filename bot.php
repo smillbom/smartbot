@@ -27,7 +27,7 @@ $isDatapivate=sizeof($datapivate);
 $jsonchk = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.'"}');
 $datachk = json_decode($jsonchk);
 $isDatachk = sizeof($datachk);
-$idchk='';
+// $idchk='';
  foreach($datachk as $rec){
       $idchk = $rec->userid;
    }
@@ -35,7 +35,7 @@ $idchk='';
 $jsonkey = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"key":"'.$_msg.'"}');
 $datakry = json_decode($jsonkey);
 $isDatakey = sizeof($datakry);
-$key='';
+// $key='';
  foreach($datakry as $rec){
       $key = $rec->key;
    }
@@ -50,6 +50,7 @@ if (strpos($_msg, 'edo') !== false) {
     //Post New Data
     $newData = json_encode(
       array(
+       'userid' => 'all',
         'question' => $_question,
         'answer'=> $_answer
       )
@@ -126,6 +127,7 @@ else if($isDatachk >0)
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
  }
+ //////////////////////////////////////////////////////add key by private
  else if (strpos($_msg, 'addkey') !== false) {
   if (strpos($_msg, 'addkey') !== false) {
     $x_tra = str_replace("addkey","", $_msg);
@@ -172,6 +174,7 @@ else if($isDatachk >0)
   }   
  }
 }
+//////////////////////////////////////////////////////add key by public
 else if (strpos($_msg, 'addkey') !== false) {
   if (strpos($_msg, 'addkey') !== false) {
     $x_tra = str_replace("addkey","", $_msg);
