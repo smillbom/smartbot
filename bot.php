@@ -91,7 +91,8 @@ else if($_msg == $key && $idchk != null ){
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'มีคนใช้ key นี้ไปแล้วไม่สามารถใช้ได้อีก';
 }
-else if($isDatachk >0){
+else if($isDatachk >0)
+{
   if (strpos($_msg, 'pri') !== false) {
   if (strpos($_msg, 'pri') !== false) {
     $x_tra = str_replace("edo","", $_msg);
@@ -120,8 +121,9 @@ else if($isDatachk >0){
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
-  }
- }else
+ }
+
+ else
   {
    if($isDatapivate >0){
    foreach($datapivate as $rec){
@@ -138,6 +140,7 @@ else if($isDatachk >0){
     $arrPostData['messages'][0]['text'] = 'สอน edo ให้ฉลาดขึ้นพียงพิม: edo[คำถาม|ตอบ] key : $key userchk : $idchk ' ;
   }   
  }
+}
 else if (strpos($_msg, 'addkey') !== false) {
   if (strpos($_msg, 'addkey') !== false) {
     $x_tra = str_replace("addkey","", $_msg);
