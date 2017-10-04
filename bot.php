@@ -122,7 +122,34 @@ else if($isDatachk >0)
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
  }
-
+ else if (strpos($_msg, 'addkey') !== false) {
+  if (strpos($_msg, 'addkey') !== false) {
+    $x_tra = str_replace("addkey","", $_msg);
+    $pieces = explode("]", $x_tra);
+    $key=str_replace("[","",$pieces[0]);
+   
+    //Post New Data
+    $newData = json_encode(
+      array(       
+        'key' => $key
+      )
+    );
+    $opts = array(
+      'http' => array(
+          'method' => "POST",
+          'header' => "Content-type: application/json",
+          'content' => $newData
+       )
+    );
+    $context = stream_context_create($opts);
+    $returnValue = file_get_contents($url,false,$context);
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = "addkey $key ok";
+   
+  }
+}
  else
   {
    if($isDatapivate >0){
