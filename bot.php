@@ -19,7 +19,7 @@ $url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey=
 $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"all"}');
 $data = json_decode($json);
 $isData = sizeof($data);
-$isDataok = $data[0]['_id']['$oid'];
+
 //get data private user
 $jsonpivate = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"'.$userid.'"}');
 $datapivate = json_decode($jsonpivate);
@@ -162,7 +162,7 @@ else if($isDatachk >0)
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "$rec->answer  $isDataok";
+    $arrPostData['messages'][0]['text'] = "$rec->answer";
    }
   }
   else{
