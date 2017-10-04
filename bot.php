@@ -169,7 +169,7 @@ else if($isDatachk >0)
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "สอน edo ให้ฉลาดขึ้นพียงพิม: edo[คำถาม|ตอบ] $jsonpivate " ;
+    $arrPostData['messages'][0]['text'] = "สอน edo ให้ฉลาดขึ้นพียงพิม: edo[คำถาม|ตอบ] " ;
   }   
  }
 }
