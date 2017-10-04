@@ -100,7 +100,27 @@ else if($isDatachk >0){
     $arrPostData['messages'][0]['text'] = "key : $key userchk : $idchk ";
 
 }
+else if($_msg == 'public'){
+ $newData = json_encode(
+      array(
+        'userid' => $userid        
+      )
+    );
+    $opts = array(
+      'http' => array(
+          'method' => "DELETE",
+          'header' => "Content-type: application/json",
+          'content' => $newData
+       )
+    );
+    $context = stream_context_create($opts);
+    $returnValue = file_get_contents($url,false,$context);
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = 'ออกจากโหมดส่วนตัวเรียบร้อยครับ';
 
+}
 else if (strpos($_msg, 'addkey') !== false) {
   if (strpos($_msg, 'addkey') !== false) {
     $x_tra = str_replace("addkey","", $_msg);
