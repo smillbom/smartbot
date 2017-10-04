@@ -20,7 +20,7 @@ $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collecti
 $data = json_decode($json);
 $isData=sizeof($data);
 foreach($data as $rec){
-      $isDataok = $rec->_id->$oid;
+      $isDataok = $rec->_id[$oid];
    }
 //get data private user
 $jsonpivate = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"'.$userid.'"}');
