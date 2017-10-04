@@ -95,7 +95,7 @@ else if($isDatachk >0)
 {
   if (strpos($_msg, 'pri') !== false) {
   if (strpos($_msg, 'pri') !== false) {
-    $x_tra = str_replace("edo","", $_msg);
+    $x_tra = str_replace("pri","", $_msg);
     $pieces = explode("|", $x_tra);
     $_question=str_replace("[","",$pieces[0]);
     $_answer=str_replace("]","",$pieces[1]);
