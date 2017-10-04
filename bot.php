@@ -16,7 +16,7 @@ $userid = $arrJson['events'][0]['source']['userId'];
 $api_key="-O3pzxmDdrITsFlTnMCbWgsvqATaohmC";
 //get data public user
 $url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
+$json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.',"userid":"all""}');
 $data = json_decode($json);
 $isData=sizeof($data);
 //get data private user
@@ -27,7 +27,6 @@ $isDatapivate=sizeof($datapivate);
 $jsonchk = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.'"}');
 $datachk = json_decode($jsonchk);
 $isDatachk = sizeof($datachk);
-// $idchk='';
  foreach($datachk as $rec){
       $idchk = $rec->userid;
    }
@@ -35,7 +34,6 @@ $isDatachk = sizeof($datachk);
 $jsonkey = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"key":"'.$_msg.'"}');
 $datakry = json_decode($jsonkey);
 $isDatakey = sizeof($datakry);
-// $key='';
  foreach($datakry as $rec){
       $key = $rec->key;
    }
