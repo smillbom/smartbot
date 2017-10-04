@@ -18,6 +18,11 @@ $url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey=
 $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'"}');
 $data = json_decode($json);
 $isData=sizeof($data);
+
+$jsonpivate = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"'.$userid.'"}');
+$datapivate = json_decode($jsonpivate);
+$isDatapivate=sizeof($datapivate);
+
 $jsonchk = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.'"}');
 $datachk = json_decode($jsonchk);
 $isDatachk = sizeof($datachk);
@@ -59,7 +64,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
-}else if($_msg == $key  && $idchk != $userid && $isDatachk == null ){
+}else if($_msg == $key  && $idchk != $userid){
     $newData = json_encode(
       array(
         'userid' => $userid,
@@ -80,18 +85,58 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'Key ของคุณถูกเปิดใช้ การโต้ตอบของผมต่อไปนี้มาจากผู้สร้างผมเพียงคนเดียว และคุณสามารถออกจากระบบได้เพียงพิมพ์คำว่า ออกอีโด้';
 }
-else if($_msg == $key && $idchk != '' ){
+else if($_msg == $key && $idchk != null ){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'มีคนใช้ key นี้ไปแล้วไม่สามารถใช้ได้อีก';
 }
 else if($isDatachk >0){
+  if (strpos($_msg, 'pri') !== false) {
+  if (strpos($_msg, 'pri') !== false) {
+    $x_tra = str_replace("edo","", $_msg);
+    $pieces = explode("|", $x_tra);
+    $_question=str_replace("[","",$pieces[0]);
+    $_answer=str_replace("]","",$pieces[1]);
+    //Post New Data
+    $newData = json_encode(
+      array(
+        'userid' => $userid,
+        'question' => $_question,
+        'answer'=> $_answer
+      )
+    );
+    $opts = array(
+      'http' => array(
+          'method' => "POST",
+          'header' => "Content-type: application/json",
+          'content' => $newData
+       )
+    );
+    $context = stream_context_create($opts);
+    $returnValue = file_get_contents($url,false,$context);
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "key : $key userchk : $idchk ";
-}
+    $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
+  }
+ }else
+  {
+   if($isDatapivate >0){
+   foreach($datapivate as $rec){
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = $rec->answer;
+   }
+  }
+  else{
+    $arrPostData = array();
+    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+    $arrPostData['messages'][0]['type'] = "text";
+    $arrPostData['messages'][0]['text'] = 'สอน edo ให้ฉลาดขึ้นพียงพิม: edo[คำถาม|ตอบ] key : $key userchk : $idchk ' ;
+  }   
+ }
 else if (strpos($_msg, 'addkey') !== false) {
   if (strpos($_msg, 'addkey') !== false) {
     $x_tra = str_replace("addkey","", $_msg);
