@@ -20,7 +20,7 @@ $where_key =$userid."key";
 
 //get data public user
 $url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'';
-$json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"all"}');
+$json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"all","key":"all"}');
 $data = json_decode($json);
 $isData=sizeof($data);
 
@@ -240,7 +240,7 @@ else if ($_msg == 'addkey') {
 /////////////////////////////////////////////////event public
 else{
 	if($isData >0){
-		foreach($data as $rec){
+		foreach($datalane as $rec){
 			$arrPostData = array();
 			$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 			$arrPostData['messages'][0]['type'] = "text";
@@ -254,10 +254,10 @@ else{
 	}
 }   
 
-    $arrPostData = array();
-   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-  $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = $datalane ;
+  //   $arrPostData = array();
+  //  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  // $arrPostData['messages'][0]['type'] = "text";
+  // $arrPostData['messages'][0]['text'] = $datalane ;
 
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
