@@ -24,7 +24,6 @@ $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collecti
 $arr = json_decode($json, true);
 $element[] = $arr[mt_rand(0, count($arr) - 1)];
 $json = json_encode($element);
-if($json==null)$json=[];
 $data = json_decode($json);
 $isData=sizeof($data);
 
@@ -242,7 +241,7 @@ else if ($_msg == 'addkey') {
 
 /////////////////////////////////////////////////event public
 else{
-	if($isData >0){
+	if($isData == [null]){
 		foreach($data as $rec){
 			$arrPostData = array();
 			$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
@@ -257,10 +256,10 @@ else{
 	}
 }   
 
-    $arrPostData = array();
-   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-  $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = $json ;
+  //   $arrPostData = array();
+  //  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  // $arrPostData['messages'][0]['type'] = "text";
+  // $arrPostData['messages'][0]['text'] = $json ;
 
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
