@@ -241,7 +241,7 @@ else if ($_msg == 'addkey') {
 
 /////////////////////////////////////////////////event public
 else{
-	if($isData == null){
+	if($isData >0 ){
 		foreach($data as $rec){
 			$arrPostData = array();
 			$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
@@ -256,10 +256,10 @@ else{
 	}
 }   
 
-  //   $arrPostData = array();
-  //  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-  // $arrPostData['messages'][0]['type'] = "text";
-  // $arrPostData['messages'][0]['text'] = $json ;
+    $arrPostData = array();
+   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  $arrPostData['messages'][0]['type'] = "text";
+  $arrPostData['messages'][0]['text'] = $isData ;
 
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
