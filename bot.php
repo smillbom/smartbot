@@ -77,7 +77,7 @@ if (strpos($_msg, 'edo') !== false) {
   }
 }
 //////////////////////////////////////////////////////////////////////use key
-else if($_msg == $key  && $idchk != $userid && $_msg != null){
+else if($_msg == $key && $isDatakey_use == 0){
     $newData = json_encode(
       array(
         'userid' => $userid."key",
@@ -228,10 +228,10 @@ else{
     $arrPostData['messages'][0]['text'] = 'สอน edo ให้ฉลาดขึ้นพียงพิม: edo[คำถาม|ตอบ]' ;
   }
 }
-    $arrPostData = array();
-    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-    $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $isDatakey_use ;
+//     $arrPostData = array();
+//     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+//     $arrPostData['messages'][0]['type'] = "text";
+//     $arrPostData['messages'][0]['text'] = $isDatakey_use ;
  
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
