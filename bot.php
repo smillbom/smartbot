@@ -48,8 +48,8 @@ $datakry_use = json_decode($jsonkey_use);
 $isDatakey_use = sizeof($datakry_use);
 
 // chk user private msg
-$where_key = "key";
-$jsonkey_msg = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid$where_key.'"}');
+$where_key =$userid."key";
+$jsonkey_msg = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$where_key.'"}');
 $datakry_msg = json_decode($jsonkey_msg);
 $isDatakey_msg = sizeof($datakry_msg);
 // $test = "https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.key'"}";
