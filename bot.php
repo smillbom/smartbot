@@ -97,7 +97,7 @@ else if($_msg == $key && $idchk != null ){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'มีคนใช้ key นี้ไปแล้วไม่สามารถใช้ได้อีก';
+    $arrPostData['messages'][0]['text'] = 'ถูกเปิดใช้แล้ว';
 }
 else if($isDatachk >0)
 {
