@@ -193,11 +193,11 @@ else if($isDatachk >0)
 		$arrPostData['messages'][0]['text'] = $randomString;  
 	}
 	else if ($_msg == 'key?'){
-	foreach($datakry_msg as $rec){	
+	// for ($i=0; $i < count($datakry_msg)-1) ; $i++) { 
 		$arrPostData = array();
 		$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 		$arrPostData['messages'][0]['type'] = "text";
-		$arrPostData['messages'][0]['text'] = $rec->key; 
+		$arrPostData['messages'][0]['text'] = $datakry_msg; 
 
 		$channel = curl_init();
 		curl_setopt($channel, CURLOPT_URL,$strUrl);
@@ -210,7 +210,9 @@ else if($isDatachk >0)
 		$result = curl_exec($channel);
 		curl_close ($channel);
 	
-	}
+	// }($datakry_msg as $rec){	
+		
+	// }
 
 }
 ///////////////////////////////////////////////////event private
