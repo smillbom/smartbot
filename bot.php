@@ -193,26 +193,26 @@ else if($isDatachk >0)
 		$arrPostData['messages'][0]['text'] = $randomString;  
 	}
 	else if ($_msg == 'key?'){
-	for($datakry_show as $rec){	
-		$arrPostData = array();
-		$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-		$arrPostData['messages'][0]['type'] = "text";
-		$arrPostData['messages'][0]['text'] = $rec->key; 
+		for($datakry_show as $rec){	
+			$arrPostData = array();
+			$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+			$arrPostData['messages'][0]['type'] = "text";
+			$arrPostData['messages'][0]['text'] = $rec->key; 
 
-		$channel = curl_init();
-		curl_setopt($channel, CURLOPT_URL,$strUrl);
-		curl_setopt($channel, CURLOPT_HEADER, false);
-		curl_setopt($channel, CURLOPT_POST, true);
-		curl_setopt($channel, CURLOPT_HTTPHEADER, $arrHeader);
-		curl_setopt($channel, CURLOPT_POSTFIELDS, json_encode($arrPostData));
-		curl_setopt($channel, CURLOPT_RETURNTRANSFER,true);
-		curl_setopt($channel, CURLOPT_SSL_VERIFYPEER, false);
-		$result = curl_exec($channel);
-		curl_close ($channel);
-	
+			$channel = curl_init();
+			curl_setopt($channel, CURLOPT_URL,$strUrl);
+			curl_setopt($channel, CURLOPT_HEADER, false);
+			curl_setopt($channel, CURLOPT_POST, true);
+			curl_setopt($channel, CURLOPT_HTTPHEADER, $arrHeader);
+			curl_setopt($channel, CURLOPT_POSTFIELDS, json_encode($arrPostData));
+			curl_setopt($channel, CURLOPT_RETURNTRANSFER,true);
+			curl_setopt($channel, CURLOPT_SSL_VERIFYPEER, false);
+			$result = curl_exec($channel);
+			curl_close ($channel);
+			
+		}
+
 	}
-
-}
 ///////////////////////////////////////////////////event private
 	else
 	{
@@ -280,7 +280,7 @@ else if ($_msg == 'key?'){
 		curl_setopt($channel, CURLOPT_SSL_VERIFYPEER, false);
 		$result = curl_exec($channel);
 		curl_close ($channel);
-	
+		
 	}
 
 }
@@ -301,10 +301,10 @@ else{
 	}
 }   
 
-//     $arrPostData = array();
-//    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-//   $arrPostData['messages'][0]['type'] = "text";
-//   $arrPostData['messages'][0]['text'] = $key_msg ;
+    $arrPostData = array();
+   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  $arrPostData['messages'][0]['type'] = "text";
+  $arrPostData['messages'][0]['text'] = $datakry_msg ;
 
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
