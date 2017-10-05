@@ -72,6 +72,7 @@ if (strpos($_msg, 'edo') !== false) {
     //Post New Data
 		$newData = json_encode(
 			array(
+				'key' => 'all',
 				'userid' => 'all',
 				'question' => $_question,
 				'answer'=> $_answer
