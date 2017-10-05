@@ -135,7 +135,7 @@ else if($isDatachk >0)
    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
-    for ($i = 0; $i < 10; $i++) {
+    for ($i = 0; $i < 17; $i++) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
    
@@ -157,7 +157,7 @@ else if($isDatachk >0)
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "addkey $key ok";  
+    $arrPostData['messages'][0]['text'] = "addkey $randomString ok";  
 }
  else
   {
@@ -182,7 +182,7 @@ else if ($_msg == 'addkey') {
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
-    for ($i = 0; $i < 10; $i++) {
+    for ($i = 0; $i < 17; $i++) {
         $randomString .= $characters[rand(0, $charactersLength - 1)];
     }
    
@@ -204,7 +204,7 @@ else if ($_msg == 'addkey') {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "addkey $key ok";  
+    $arrPostData['messages'][0]['text'] = "addkey $randomString ok";  
   
 }
 else{
