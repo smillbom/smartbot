@@ -1,5 +1,8 @@
 <?php
+//Token Line
 $strAccessToken = "pvshntZ6AyDG9yEbGFQqR++VTaVTyMn+ibQRRMz8+JP2wNrO7eSBiWE9olx2uK8uAIQkVRVJxKYIIPujGMaV2xcdavFKcPICfpAcAORw2BxT4Ku/aYQLCeXaIGVFnCE5ipvqGs9eSxgf2gfNoreKCgdB04t89/1O/w1cDnyilFU=";
+ //key Mlab
+$api_key="-O3pzxmDdrITsFlTnMCbWgsvqATaohmC";
  
 $content = file_get_contents('php://input');
 $arrJson = json_decode($content, true);
@@ -14,8 +17,7 @@ $userid = $arrJson['events'][0]['source']['userId'];
 
 $where_key =$userid."key";
  
- //คีร์ Mlab
-$api_key="-O3pzxmDdrITsFlTnMCbWgsvqATaohmC";
+
 //get data public user
 $url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'';
 $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"all"}');
@@ -29,7 +31,8 @@ $isData=sizeof($data);
 //get data private user
 $jsonpivate = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"'.$userid.'"}');
 $datapivate = json_decode($jsonpivate);
-$isDatapivate=sizeof($datapivate);
+$isDatapivate=sizeof($datapivate); 
+
 //get data check user ID
 $jsonchk = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$where_key.'"}');
 $datachk = json_decode($jsonchk);
@@ -37,6 +40,7 @@ $isDatachk = sizeof($datachk);
  foreach($datachk as $rec){
       $idchk = $rec->userid;
    }
+
 //get data check Key ID
 $jsonkey = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"key":"'.$_msg.'"}');
 $datakry = json_decode($jsonkey);
@@ -44,6 +48,7 @@ $isDatakey = sizeof($datakry);
  foreach($datakry as $rec){
       $key = $rec->key;
    }
+
 // chk key use
 $jsonkey_use = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"key_use":"'.$_msg.'"}');
 $datakry_use = json_decode($jsonkey_use);
@@ -54,11 +59,11 @@ $isDatakey_use = sizeof($datakry_use);
 $jsonkey_msg = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$where_key.'"}');
 $datakry_msg = json_decode($jsonkey_msg);
 $isDatakey_msg = sizeof($datakry_msg);
-// $test = "https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.key'"}";
 foreach($datakry_msg as $rec){
       $key_msg = $rec->key;
    }
 
+///////////////////////////////////////////// add msg public
 if (strpos($_msg, 'edo') !== false) {
   if (strpos($_msg, 'edo') !== false) {
     $x_tra = str_replace("edo","", $_msg);
@@ -88,7 +93,7 @@ if (strpos($_msg, 'edo') !== false) {
     $arrPostData['messages'][0]['text'] = 'ขอบคุณที่บอก edo';
   }
 }
-//////////////////////////////////////////////////////////////////////use key
+//////////////////////////////////////////////////////////////////////use key user
 else if($_msg == $key && $isDatakey_use == 0){
     $newData = json_encode(
       array(
@@ -117,6 +122,7 @@ else if($isDatakey_use > 0){
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = "มีคนใช้ Key นี้แล้ว";
 }
+/////////////////////////////////////////// start loop private
 else if($isDatachk >0)
 {
   if (strpos($_msg, 'pri') !== false) {
@@ -151,7 +157,7 @@ else if($isDatachk >0)
  }
  //////////////////////////////////////////////////////add key by private
  else if ($_msg == 'addkey') {
-   $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+   	$characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
     for ($i = 0; $i < 17; $i++) {
@@ -178,6 +184,7 @@ else if($isDatachk >0)
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = $randomString;  
 }
+///////////////////////////////////////////////////event private
  else
   {
    if($isDatapivate >0){
@@ -226,6 +233,7 @@ else if ($_msg == 'addkey') {
     $arrPostData['messages'][0]['text'] = $randomString;  
   
 }
+/////////////////////////////////////////////////event public
 else{
   if($isData >0){
    foreach($data as $rec){
@@ -240,7 +248,7 @@ else{
     $arrPostData['messages'][0]['type'] = "text";
     $arrPostData['messages'][0]['text'] = 'สอน edo ให้ฉลาดขึ้นพียงพิม: edo[คำถาม|ตอบ]' ;
   }
-}
+}   
 
 //     $arrPostData = array();
 //    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
