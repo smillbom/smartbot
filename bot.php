@@ -26,6 +26,7 @@ $isData=sizeof($data);
 
 	$data1 = json_decode($json,true);
 	$array_data = $array[rand(0, count($data1) - 1)]; 	
+	$json_e = json_encode($array_data);
 	// $datalane = rand(0,count($array_data)-1);
  	// $datalane = $array_data[$ran];
 
@@ -245,7 +246,7 @@ else{
 			$arrPostData = array();
 			$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 			$arrPostData['messages'][0]['type'] = "text";
-			$arrPostData['messages'][0]['text'] = $rec->answer.$array_data ;
+			$arrPostData['messages'][0]['text'] = $rec->answer.$json_e ;
 		}
 	}else{
 		$arrPostData = array();
