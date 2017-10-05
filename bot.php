@@ -40,9 +40,9 @@ $isDatapivate=sizeof($datapivate);
 
 //get data check user ID
 $jsonchk = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$where_key.'"}');
-$arr = json_decode($json, true);
+$arr = json_decode($jsonchk, true);
 $element[] = $arr[mt_rand(0, count($arr) - 1)];
-$json = json_encode($element);
+$jsonchk = json_encode($element);
 $datachk = json_decode($jsonchk);
 $isDatachk = sizeof($datachk);
 foreach($datachk as $rec){
@@ -51,9 +51,9 @@ foreach($datachk as $rec){
 
 //get data check Key ID
 $jsonkey = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"key":"'.$_msg.'"}');
-$arr = json_decode($json, true);
+$arr = json_decode($jsonkey, true);
 $element[] = $arr[mt_rand(0, count($arr) - 1)];
-$json = json_encode($element);
+$jsonkey = json_encode($element);
 $datakry = json_decode($jsonkey);
 $isDatakey = sizeof($datakry);
 foreach($datakry as $rec){
@@ -62,17 +62,17 @@ foreach($datakry as $rec){
 
 // chk key use
 $jsonkey_use = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"key_use":"'.$_msg.'"}');
-$arr = json_decode($json, true);
+$arr = json_decode($jsonkey_use, true);
 $element[] = $arr[mt_rand(0, count($arr) - 1)];
-$json = json_encode($element);
+$jsonkey_use = json_encode($element);
 $datakry_use = json_decode($jsonkey_use);
 $isDatakey_use = sizeof($datakry_use);
 
 // chk user private msg
 $jsonkey_msg = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$where_key.'"}');
-$arr = json_decode($json, true);
+$arr = json_decode($jsonkey_msg, true);
 $element[] = $arr[mt_rand(0, count($arr) - 1)];
-$json = json_encode($element);
+$jsonkey_msg = json_encode($element);
 $datakry_msg = json_decode($jsonkey_msg);
 $isDatakey_msg = sizeof($datakry_msg);
 foreach($datakry_msg as $rec){
