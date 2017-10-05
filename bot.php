@@ -24,11 +24,10 @@ $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collecti
 $data = json_decode($json);
 $isData=sizeof($data);
 
-	$data1 = json_decode($json,true);
-	$array_data = $array[rand(0, count($data1) - 1)]; 	
-	$json_e = json_encode($array_data);
-	// $datalane = rand(0,count($array_data)-1);
- 	// $datalane = $array_data[$ran];
+$arr = json_decode($json, true);
+$element = $arr[mt_rand(0, count($arr) - 1)];
+$json = json_encode($element);
+// echo $json;
 
 //get data private user
 $jsonpivate = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"'.$userid.'"}');
@@ -246,7 +245,7 @@ else{
 			$arrPostData = array();
 			$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 			$arrPostData['messages'][0]['type'] = "text";
-			$arrPostData['messages'][0]['text'] = $rec->answer.$json_e ;
+			$arrPostData['messages'][0]['text'] = $rec->answer.$json ;
 		}
 	}else{
 		$arrPostData = array();
