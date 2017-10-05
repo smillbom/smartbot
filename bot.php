@@ -63,11 +63,6 @@ foreach($datakry_msg as $rec){
 	$key_msg = $rec->key;
 }
 
-$jsonkey_show= file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"showkey":"yes"}');
-$datakry_show = json_decode($jsonkey_show);
-$isDatakey_show = sizeof($datakry_show);
-
-
 ///////////////////////////////////////////// add msg public
 if (strpos($_msg, 'edo') !== false) {
 	if (strpos($_msg, 'edo') !== false) {
@@ -263,27 +258,7 @@ else if ($_msg == 'addkey') {
 	$arrPostData['messages'][0]['text'] = $randomString;  
 
 }
-else if ($_msg == 'key?'){
-	// foreach($datakry_msg as $rec){	
-		$arrPostData = array();
-		$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-		$arrPostData['messages'][0]['type'] = "text";
-		$arrPostData['messages'][0]['text'] = $datakry_msg; 
 
-		// $channel = curl_init();
-		// curl_setopt($channel, CURLOPT_URL,$strUrl);
-		// curl_setopt($channel, CURLOPT_HEADER, false);
-		// curl_setopt($channel, CURLOPT_POST, true);
-		// curl_setopt($channel, CURLOPT_HTTPHEADER, $arrHeader);
-		// curl_setopt($channel, CURLOPT_POSTFIELDS, json_encode($arrPostData));
-		// curl_setopt($channel, CURLOPT_RETURNTRANSFER,true);
-		// curl_setopt($channel, CURLOPT_SSL_VERIFYPEER, false);
-		// $result = curl_exec($channel);
-		// curl_close ($channel);
-
-	// }
-
-}
 /////////////////////////////////////////////////event public
 else{
 	if($isData >0){
