@@ -193,7 +193,7 @@ else if($isDatachk >0)
 		$arrPostData['messages'][0]['text'] = $randomString;  
 	}
 	else if ($_msg == 'key?'){
-	for($datakry_msg as $rec){	
+	for($datakry_show as $rec){	
 		$arrPostData = array();
 		$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 		$arrPostData['messages'][0]['type'] = "text";
