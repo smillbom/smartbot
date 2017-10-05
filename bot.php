@@ -21,7 +21,7 @@ $where_key =$userid."key";
 //get data public user
 $url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'';
 $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"all","key":"all"}');
-$data = json_decode($json,true);
+$data = json_decode($json);
 $isData=sizeof($data);
 
 	$array_data = $array[rand(0, count($data) - 1)]; 	
