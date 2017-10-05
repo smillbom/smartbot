@@ -75,7 +75,7 @@ if (strpos($_msg, 'edo') !== false) {
 }else if($_msg == $key  && $idchk != $userid && $_msg != null){
     $newData = json_encode(
       array(
-        'userid' => $userid,
+        'userid' => $userid."key",
         'key' => $_msg 
       )
     );
