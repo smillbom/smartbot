@@ -103,7 +103,7 @@ else if($isDatakey_use > 0){
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = 'ถูกเปิดใช้แล้ว';
+    $arrPostData['messages'][0]['text'] = "มีคนใช้ Key นี้แล้ว";
 }
 else if($isDatachk >0)
 {
