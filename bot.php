@@ -48,10 +48,10 @@ $datakry_use = json_decode($jsonkey_use);
 $isDatakey_use = sizeof($datakry_use);
 
 // chk user private msg
-$jsonkey_msg = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.key'"}');
+$jsonkey_msg = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.''key'"}');
 $datakry_msg = json_decode($jsonkey_msg);
 $isDatakey_msg = sizeof($datakry_msg);
-$test = "https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.key'"}";
+// $test = "https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.key'"}";
 foreach($datakry_msg as $rec){
       $key_msg = $rec->key;
    }
@@ -241,7 +241,7 @@ else{
     $arrPostData = array();
    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = $test ;
+  $arrPostData['messages'][0]['text'] = $key_msg ;
  
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
