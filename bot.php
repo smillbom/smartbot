@@ -11,6 +11,8 @@ $arrHeader[] = "Content-Type: application/json";
 $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
 $_msg = $arrJson['events'][0]['message']['text'];
 $userid = $arrJson['events'][0]['source']['userId'];
+
+$where_key =$userid."key";
  
  //คีร์ Mlab
 $api_key="-O3pzxmDdrITsFlTnMCbWgsvqATaohmC";
@@ -48,7 +50,7 @@ $datakry_use = json_decode($jsonkey_use);
 $isDatakey_use = sizeof($datakry_use);
 
 // chk user private msg
-$where_key =$userid."key";
+
 $jsonkey_msg = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$where_key.'"}');
 $datakry_msg = json_decode($jsonkey_msg);
 $isDatakey_msg = sizeof($datakry_msg);
