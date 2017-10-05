@@ -131,7 +131,7 @@ else if($isDatachk >0)
   }
  }
  //////////////////////////////////////////////////////add key by private
- else if ($_msg == 'addkeyedo') {
+ else if ($_msg == 'addkey') {
    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
@@ -178,7 +178,7 @@ else if($isDatachk >0)
  }
 }
 //////////////////////////////////////////////////////add key by public
-else if ($_msg == 'addkeyedo') {   
+else if ($_msg == 'addkey') {   
     $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
     $charactersLength = strlen($characters);
     $randomString = '';
