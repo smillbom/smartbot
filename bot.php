@@ -231,7 +231,7 @@ else{
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = $jsonkey_use ;
+    $arrPostData['messages'][0]['text'] = $isDatakey ;
  
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
