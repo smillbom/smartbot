@@ -21,9 +21,9 @@ $where_key =$userid."key";
 //get data public user
 $url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'';
 $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"all","key":"all"}');
-// $arr = json_decode($json, true);
-// $element[] = $arr[mt_rand(0, count($arr) - 1)];
-// $json = json_encode($element);
+$arr = json_decode($json, true);
+$element[] = $arr[mt_rand(0, count($arr) - 1)];
+$json = json_encode($element);
 $data = json_decode($json);
 $isData=sizeof($data);
 
@@ -256,10 +256,10 @@ else{
 	}
 }   
 
-  //   $arrPostData = array();
-  //  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-  // $arrPostData['messages'][0]['type'] = "text";
-  // $arrPostData['messages'][0]['text'] = $datalane ;
+    $arrPostData = array();
+   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  $arrPostData['messages'][0]['type'] = "text";
+  $arrPostData['messages'][0]['text'] = $json ;
 
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
