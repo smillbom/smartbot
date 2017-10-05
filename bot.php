@@ -29,7 +29,7 @@ $isData=sizeof($arr);
 
 //get data private user
 $jsonpivate = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"'.$userid.'"}');
-$arrprivate = json_decode($json, true);
+$arrprivate = json_decode($jsonpivate, true);
 $elementprivate[] = $arr[mt_rand(0, count($arrprivate) - 1)];
 $jsonpivate = json_encode($elementprivate);
 $datapivate = json_decode($jsonpivate);
