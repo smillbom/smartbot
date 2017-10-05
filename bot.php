@@ -29,7 +29,7 @@ $jsonpivate = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/co
 $datapivate = json_decode($jsonpivate);
 $isDatapivate=sizeof($datapivate);
 //get data check user ID
-$jsonchk = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$userid.'"}');
+$jsonchk = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"userid":"'.$where_key.'"}');
 $datachk = json_decode($jsonchk);
 $isDatachk = sizeof($datachk);
  foreach($datachk as $rec){
