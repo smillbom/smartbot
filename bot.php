@@ -157,7 +157,7 @@ else if($isDatachk >0)
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "addkey $randomString ok";  
+    $arrPostData['messages'][0]['text'] = $randomString;  
 }
  else
   {
@@ -204,7 +204,7 @@ else if ($_msg == 'addkey') {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "addkey $randomString ok";  
+    $arrPostData['messages'][0]['text'] = $randomString;  
   
 }
 else{
