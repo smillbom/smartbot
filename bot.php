@@ -24,7 +24,8 @@ $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collecti
 $data = json_decode($json);
 $isData=sizeof($data);
 
-	$array_data = $array[rand(0, count($data) - 1)]; 	
+	$data1 = json_decode($json,true);
+	$array_data = $array[rand(0, count($data1) - 1)]; 	
 	// $datalane = rand(0,count($array_data)-1);
  	// $datalane = $array_data[$ran];
 
