@@ -17,9 +17,8 @@ $api_key="-O3pzxmDdrITsFlTnMCbWgsvqATaohmC";
 //get data public user
 $url = 'https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'';
 $json = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"question":"'.$_msg.'","userid":"all"}');
-$datalane = json_decode($json,true);
-$ran = rand(0,count($datalane)-1);
-$data = $array_data[$ran];
+$data = json_decode($json);
+$isData=sizeof($data);
 
 //  $array_data = json_decode($data,true);
 // 	$ran = rand(0,count($array_data)-1);
@@ -132,16 +131,18 @@ else if($isDatachk >0)
   }
  }
  //////////////////////////////////////////////////////add key by private
- else if (strpos($_msg, 'addkey') !== false) {
-  if (strpos($_msg, 'addkey') !== false) {
-    $x_tra = str_replace("addkey","", $_msg);
-    $pieces = explode("]", $x_tra);
-    $key=str_replace("[","",$pieces[0]);
+ else if ($_msg == 'addkeyedo') {
+   $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < 10; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
    
     //Post New Data
     $newData = json_encode(
       array(       
-        'key' => $key
+        'key' => $randomString
       )
     );
     $opts = array(
@@ -156,9 +157,7 @@ else if($isDatachk >0)
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "addkey $key ok";
-   
-  }
+    $arrPostData['messages'][0]['text'] = "addkey $key ok";  
 }
  else
   {
@@ -179,16 +178,18 @@ else if($isDatachk >0)
  }
 }
 //////////////////////////////////////////////////////add key by public
-else if (strpos($_msg, 'addkey') !== false) {
-  if (strpos($_msg, 'addkey') !== false) {
-    $x_tra = str_replace("addkey","", $_msg);
-    $pieces = explode("]", $x_tra);
-    $key=str_replace("[","",$pieces[0]);
+else if ($_msg == 'addkeyedo') {   
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $charactersLength = strlen($characters);
+    $randomString = '';
+    for ($i = 0; $i < 10; $i++) {
+        $randomString .= $characters[rand(0, $charactersLength - 1)];
+    }
    
     //Post New Data
     $newData = json_encode(
       array(       
-        'key' => $key
+        'key' => $randomString
       )
     );
     $opts = array(
@@ -203,9 +204,8 @@ else if (strpos($_msg, 'addkey') !== false) {
     $arrPostData = array();
     $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
     $arrPostData['messages'][0]['type'] = "text";
-    $arrPostData['messages'][0]['text'] = "addkey $key ok";
-   
-  }
+    $arrPostData['messages'][0]['text'] = "addkey $key ok";  
+  
 }
 else{
   if($isData >0){
