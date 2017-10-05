@@ -241,7 +241,7 @@ else if ($_msg == 'addkey') {
 
 /////////////////////////////////////////////////event public
 else{
-	if($isData == [null]){
+	if($isData == null){
 		foreach($data as $rec){
 			$arrPostData = array();
 			$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
