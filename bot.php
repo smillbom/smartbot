@@ -124,7 +124,7 @@ else if($isDatachk >0)
     //Post New Data
     $newData = json_encode(
       array(
-        'key' => $key,
+        'key' => $key_msg,
         'userid' => $userid,
         'question' => $_question,
         'answer'=> $_answer
