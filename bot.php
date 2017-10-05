@@ -240,11 +240,11 @@ else if ($_msg == 'addkey') {
 /////////////////////////////////////////////////event public
 else{
 	if($isData >0){
-		foreach($datalane as $rec){
+		foreach($data as $rec){
 			$arrPostData = array();
 			$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 			$arrPostData['messages'][0]['type'] = "text";
-			$arrPostData['messages'][0]['text'] = $rec->answer;
+			$arrPostData['messages'][0]['text'] = $rec->answer.$datalane ;
 		}
 	}else{
 		$arrPostData = array();
