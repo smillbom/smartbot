@@ -98,7 +98,7 @@ if (strpos($_msg, 'edo') !== false) {
 	}
 }
 //////////////////////////////////////////////////////////////////////use key user
-else if($_msg == $key && $isDatakey_use == 0 && $isDatakey == 0){
+else if($_msg == $key && $isDatakey_use == 0 ){
 	$newData = json_encode(
 		array(
 			'userid' => $userid."key",
