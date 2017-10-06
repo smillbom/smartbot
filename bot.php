@@ -50,7 +50,7 @@ $isDatakey = sizeof($datakry);
 foreach($datakry as $rec){
 	$key = $rec->key;
 	if($isDatakey == 0){
-		$key = 40404;
+		$key = "40404";
 	}
 }
 
