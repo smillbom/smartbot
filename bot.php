@@ -47,9 +47,9 @@ foreach($datachk as $rec){
 $jsonkey = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/collections/linebot?apiKey='.$api_key.'&q={"key":"'.$_msg.'"}');
 $datakry = json_decode($jsonkey);
 $isDatakey = sizeof($datakry);
-if($isDatakey==0) $datakry = 404;
 foreach($datakry as $rec){
 	$key = $rec->key;
+	if($key ==null)$key = 404;
 }
 
 // chk key use
@@ -97,7 +97,7 @@ if (strpos($_msg, 'edo') !== false) {
 	}
 }
 //////////////////////////////////////////////////////////////////////use key user
-else if($datakry  == 404 && $isDatakey_use == 0 ){
+else if($_msg == $key && $isDatakey_use == 0 ){
 	$newData = json_encode(
 		array(
 			'userid' => $userid."key",
