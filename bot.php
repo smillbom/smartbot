@@ -254,7 +254,7 @@ else{
 		$arrPostData = array();
 		$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 		$arrPostData['messages'][0]['type'] = "text";
-		$arrPostData['messages'][0]['text'] = 'ทักทายวัยรุ่น สอนผมพูดได้เพียงพิมพ์: edo[คำถาม|ตอบ]' ;
+		$arrPostData['messages'][0]['text'] = 'ทักทายวัยรุ่น สอนผมพูดได้เพียงพิมพ์: สอน[คำถาม|ตอบ]' ;
 	}
 }   
 
