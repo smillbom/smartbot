@@ -125,7 +125,7 @@ else if($isDatakey_use > 0){
 	$arrPostData = array();
 	$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
 	$arrPostData['messages'][0]['type'] = "text";
-	$arrPostData['messages'][0]['text'] = "Key กำลังใช้อยู่";
+	$arrPostData['messages'][0]['text'] = "Key ถูกใช้แล้ว";
 }
 /////////////////////////////////////////// start loop private
 else if($isDatachk >0 )
