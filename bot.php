@@ -250,6 +250,11 @@ else{
 			$arrPostData['messages'][0]['type'] = "text";
 			$arrPostData['messages'][0]['text'] = $rec->answer;
 		}
+	}else if($_msg == ""){
+		$arrPostData = array();
+		$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+		$arrPostData['messages'][0]['type'] = "text";
+		$arrPostData['messages'][0]['text'] = '5555' ;
 	}else{
 		$arrPostData = array();
 		$arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
