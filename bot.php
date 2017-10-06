@@ -49,7 +49,9 @@ $datakry = json_decode($jsonkey);
 $isDatakey = sizeof($datakry);
 foreach($datakry as $rec){
 	$key = $rec->key;
-	if($key ==null)$key = 404;
+	if($isDatakey == 0){
+		$key = 40404;
+	}
 }
 
 // chk key use
