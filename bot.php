@@ -15,6 +15,8 @@ $arrHeader[] = "Authorization: Bearer {$strAccessToken}";
 $_msg = $arrJson['events'][0]['message']['text'];
 $userid = $arrJson['events'][0]['source']['userId'];
 
+if($_msg==null)$_msg="404";
+
 $where_key =$userid."key";
 
 
@@ -48,7 +50,7 @@ $jsonkey = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/colle
 $datakry = json_decode($jsonkey);
 $isDatakey = sizeof($datakry);
 foreach($datakry as $rec){
-	$key = $rec->key;	
+	$key = $rec->key;
 }
 
 // chk key use
@@ -96,7 +98,7 @@ if (strpos($_msg, 'edo') !== false) {
 	}
 }
 //////////////////////////////////////////////////////////////////////use key user
-else if($_msg == $key && $isDatakey_use == 0 ){
+else if($_msg == $key && $isDatakey_use == 0 && $isDatakey == 0){
 	$newData = json_encode(
 		array(
 			'userid' => $userid."key",
@@ -256,10 +258,10 @@ else{
 	}
 }   
 
-    $arrPostData = array();
-   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-  $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = $arrJson ;
+  //   $arrPostData = array();
+  //  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  // $arrPostData['messages'][0]['type'] = "text";
+  // $arrPostData['messages'][0]['text'] = $datapivate ;
 
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
