@@ -48,10 +48,7 @@ $jsonkey = file_get_contents('https://api.mlab.com/api/1/databases/edo_bot/colle
 $datakry = json_decode($jsonkey);
 $isDatakey = sizeof($datakry);
 foreach($datakry as $rec){
-	$key = $rec->key;
-	if($isDatakey == 0){
-		$key = "40404";
-	}
+	$key = $rec->key;	
 }
 
 // chk key use
@@ -259,10 +256,10 @@ else{
 	}
 }   
 
-  //   $arrPostData = array();
-  //  $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
-  // $arrPostData['messages'][0]['type'] = "text";
-  // $arrPostData['messages'][0]['text'] = $datapivate ;
+    $arrPostData = array();
+   $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
+  $arrPostData['messages'][0]['type'] = "text";
+  $arrPostData['messages'][0]['text'] = $_msg ;
 
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
