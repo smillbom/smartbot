@@ -259,7 +259,7 @@ else{
     $arrPostData = array();
    $arrPostData['replyToken'] = $arrJson['events'][0]['replyToken'];
   $arrPostData['messages'][0]['type'] = "text";
-  $arrPostData['messages'][0]['text'] = $jsonpivate ;
+  $arrPostData['messages'][0]['text'] = $datapivate ;
 
 $channel = curl_init();
 curl_setopt($channel, CURLOPT_URL,$strUrl);
