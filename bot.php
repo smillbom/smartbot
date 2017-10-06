@@ -130,12 +130,12 @@ else if($isDatakey_use > 0){
 /////////////////////////////////////////// start loop private
 else if($isDatachk >0 )
 {
-	if (strpos($_msg, 'pri') !== false) {
-		if (strpos($_msg, 'pri') !== false) {
-			$x_tra = str_relace("pri","", $_msg);
-			$pieces = explode("|", $x_tra);
-			$_question=str_replace("[","",$pieces[0]);
-			$_answer=str_replace("]","",$pieces[1]);
+	if (strpos($_msg, 'สอน[') !== false) {
+	if (strpos($_msg, 'สอน[') !== false) {
+		$x_tra = str_replace("สอน","", $_msg);
+		$pieces = explode("|", $x_tra);
+		$_question=str_replace("[","",$pieces[0]);
+		$_answer=str_replace("]","",$pieces[1]);
     //Post New Data
 			$newData = json_encode(
 				array(
